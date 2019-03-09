@@ -8,12 +8,10 @@ class Bin(object):
         self.sum += item
 
     def __str__(self):
-        """ Printable representation """
-        return 'Bin(sum=%d, items=%s)' % (self.sum, str(self.items))
+        return 'Bin(sum = {0}}, items = {1})'.format(self.sum, str(self.items))
     
     def __repr__(self):
-        """ Printable representation """
-        return 'Bin(sum=%d, items=%s)' % (self.sum, str(self.items))
+        return 'Bin(sum = {0}, items = {1})'.format(self.sum, str(self.items))
 
 
 def first_fit(items, bin_size):
@@ -42,5 +40,5 @@ bin_size = 10
 n_bins = first_fit(weights, bin_size)
 n_bins_d = first_fit_d(weights, bin_size)
 
-print(len(n_bins))
+print(n_bins)
 print(len(n_bins_d))
