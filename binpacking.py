@@ -8,10 +8,10 @@ class Bin(object):
         self.sum += item
 
     def __str__(self):
-        return 'Bin(sum = {0}}, items = {1})'.format(self.sum, str(self.items))
+        return "Bin(sum = {0}}, items = {1})".format(self.sum, str(self.items))
     
     def __repr__(self):
-        return 'Bin(sum = {0}, items = {1})'.format(self.sum, str(self.items))
+        return "Bin(sum = {0}, items = {1})".format(self.sum, str(self.items))
 
 
 def first_fit(items, bin_size):
