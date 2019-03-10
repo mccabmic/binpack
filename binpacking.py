@@ -15,6 +15,6 @@ for case in range(num_cases):
     b_bins = len(best_fit(weights, bin_size))
 
     print("Test Case ", case + 1, 
-        "First Fit ", n_bins,
-        ", First Fit Decreasing ", n_bins_d,
-        ", Best Fit: ", b_bins)
+        " First Fit:", n_bins,
+        ", First Fit Decreasing:", n_bins_d,
+        ", Best Fit:", b_bins, sep = "")
