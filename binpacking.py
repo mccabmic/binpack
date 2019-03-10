@@ -1,44 +1,20 @@
-class Bin(object):
-    def __init__(self):
-        self.items = []
-        self.sum = 0
+from Bin import first_fit, first_fit_d, best_fit, Bin
+from csv import reader
 
-    def append(self, item):
-        self.items.append(item)
-        self.sum += item
+with open("bin.txt", "r") as f:
+    my_list = [[int (character) for character in line] for line in reader(f, delimiter = " ")]
 
-    def __str__(self):
-        return "Bin(sum = {0}}, items = {1})".format(self.sum, str(self.items))
-    
-    def __repr__(self):
-        return "Bin(sum = {0}, items = {1})".format(self.sum, str(self.items))
+num_cases = my_list.pop(0)[0]
+for case in range(num_cases):
+    bin_size = my_list.pop(0)[0]
+    num_items = my_list.pop(0)[0]
+    weights = my_list.pop(0)
 
+    n_bins = len(first_fit(weights, bin_size))
+    n_bins_d = len(first_fit_d(weights, bin_size))
+    b_bins = len(best_fit(weights, bin_size))
 
-def first_fit(items, bin_size):
-    bins = []
-    for item in items:
-        for bin in bins:
-            if bin.sum + item <= bin_size:
-                bin.append(item)
-                break
-        else:
-            bin = Bin()
-            bin.append(item)
-            bins.append(bin)
-
-    return bins
-
-def first_fit_d(items, bin_size):
-    values = sorted(items, reverse=True)
-    return (first_fit(values, bin_size))
-
-# weights = [3, 8, 2, 7]
-# weights = [5, 10, 2, 5, 4, 4]
-weights = [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6]
-bin_size = 10
-
-n_bins = first_fit(weights, bin_size)
-n_bins_d = first_fit_d(weights, bin_size)
-
-print(n_bins)
-print(len(n_bins_d))
+    print("Test Case ", case + 1, 
+        "First Fit ", n_bins,
+        ", First Fit Decreasing ", n_bins_d,
+        ", Best Fit: ", b_bins)
